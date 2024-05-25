@@ -8,7 +8,7 @@ from streamlit_js_eval import streamlit_js_eval
 def marker(point, to_mark, another):
     if list(point) not in st.session_state[to_mark] and list(point) not in st.session_state[another]:
         st.session_state[to_mark].append([point[0], point[1]])
-        st.experimental_rerun()
+        st.rerun()
 
 def get_distance(pos1, pos2):
     return math.dist(pos1, pos2)
@@ -36,7 +36,7 @@ def undo():
         st.session_state["pos"].pop()
     elif st.session_state['currentmark'] == 'object' and st.session_state["refpos"]:
         st.session_state["refpos"].pop()
-    st.experimental_rerun()
+    st.rerun()
 
 # Initialize session state
 if "stage" not in st.session_state:
